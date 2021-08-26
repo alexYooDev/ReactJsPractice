@@ -27,10 +27,9 @@ start: 프로젝트 실행. build: 배포모드 전환. eject: 내부 설정파�
 function App() {
   return (
     <div className="App">
-      {/* 동일한 복수의 컴포넌트여도 state는 각각 관리됨 => 다른 state에 영향을 미치지 않음*/}
-      <Hello />
-      <Hello />
-      <Hello />
+      <Hello age={10} />
+      <Hello age={20} />
+      <Hello age={30} />
       {/* 파일명 클래스명 _ 해시 값 형태로 저장 => 동일한 이름으로 작성해도 중복 우려 없음 
       프로젝트가 확장될 경우, 네이밍과 상속, 오버라이딩의 문제를 고려해야함 => 해시화로 해결
       전역화(globalization)되어 관리하는 것이 아니라 컴포넌트 별로 관리가 용이하다.*/}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Hello() {
+export default function Hello(props) {
   {
     //let name = 'Alex';
     /*state가 아닌 변수 (컴포넌트가 관리하고 있는 상태 값이 아니다.)
@@ -13,6 +13,7 @@ export default function Hello() {
   */
   }
   const [name, setName] = useState('Alex'); // useState == 배열을 반환 첫번째 값은 state명, 두 번째 값은 state를 변경하는 함수
+  const [age, setAge] = useState(props.age);
 
   {
     /*function changeName() {
@@ -23,11 +24,16 @@ export default function Hello() {
   return (
     <>
       <h1>state</h1>
-      <h2>컴포넌트의 속성 값</h2>
-      <h2 id="name">{name}</h2>
+      <h2>props: properties(속성값)</h2>
+      {/*속성값은 컴포넌트 내부에서 변경 불가. 넘겨받은 그대로 사용.
+      변경 시, 컴포넌트 내부에서 state를 다시 만들어야 함*/}
+      <h2 id="name">
+        {name}({props.age})
+      </h2>
       <button
         onClick={() => {
           setName(name === 'Alex' ? 'James' : 'Alex');
+          setAge(age + 1);
         }}
       >
         change
