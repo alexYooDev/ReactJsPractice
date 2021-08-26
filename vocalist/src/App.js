@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import Hello from './component/Hello';
-import Welcome from './component/Welcome';
+import styles from './App.module.css';
 {
   /* index.html의 div #root 밑에 구현되는 부분이다.
 작성, 수정, 삭제등 조작하면 브라우저에 바로 반영(Hot Module Replacement) 
@@ -29,9 +28,10 @@ function App() {
   return (
     <div className="App">
       <Hello />
-      <Hello />
-      <Hello />
-      <Welcome />
+      {/* 파일명 클래스명 _ 해시 값 형태로 저장 => 동일한 이름으로 작성해도 중복 우려 없음 
+      프로젝트가 확장될 경우, 네이밍과 상속, 오버라이딩의 문제를 고려해야함 => 해시화로 해결
+      전역화(globalization)되어 관리하는 것이 아니라 컴포넌트 별로 관리가 용이하다.*/}
+      <div className={styles.box}>App</div>
     </div>
   );
 }
