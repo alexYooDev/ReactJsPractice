@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Hello from './component/Hello';
+import Welcome from './component/Welcome';
 {
   /* index.html의 div #root 밑에 구현되는 부분이다.
 작성, 수정, 삭제등 조작하면 브라우저에 바로 반영(Hot Module Replacement) 
@@ -24,24 +26,12 @@ start: 프로젝트 실행. build: 배포모드 전환. eject: 내부 설정파�
   대부분의 작업은 src 폴더 내의 파일에서 진행됨*/
 }
 function App() {
-  const name = 'Alexander';
-  const google = {
-    name: 'google',
-    url: 'https://google.com',
-  };
   return (
     <div className="App">
-      {/*style과 같은 attribute는 객체로 전달해야 한다.*/}
-      <h1
-        style={{
-          color: 'white',
-          backgroundColor: 'purple',
-        }}
-      >
-        {/*숫자나 문자열은 가능. 불리언 && 객체(collection을 렌더 하고플 땐 대신 array 사용)는 불가능 */}
-        Hello! {name}!
-      </h1>
-      <a href={google.url}>{google.name}</a>
+      <Hello />
+      <Hello />
+      <Hello />
+      <Welcome />
     </div>
   );
 }
