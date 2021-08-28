@@ -35,13 +35,7 @@ export default function Word({ word }) {
 
 {
   /** 
-  유저와 상호작용하는 데이터를 위해 제이슨 서버를 설치하고 연결한다.
-  PS C:\Users\유대식\Desktop\Frontend Practice\ReactJsPractice\vocalist> npm install -g json-server
-  C:\Users\유대식\AppData\Roaming\npm\json-server -> C:\Users\유대식\AppData\Roaming\npm\node_modules\json-server\lib\cli\bin.js   
-  + json-server@0.16.3
-  added 182 packages from 80 contributors in 16.974s
-  PS C:\Users\유대식\Desktop\Frontend Practice\ReactJsPractice\vocalist> json-server --watch ./src/DB/data.json --port 3001
-
+  
   REST API: URI 주소와 메서드로 CRUD를 정의하는 것.
    * create: post http://localhost:3001/words?day=1  day 값이 1인 데이터의 목록만 가져온다.
    * read:  get http://localhost:3001/words/2 뒤에 인덱스 번호를 입력해서 get 메서드로 읽는다.
