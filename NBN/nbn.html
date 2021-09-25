@@ -37,7 +37,7 @@
             this.state.first * this.state.second
           ) {
             this.setState({
-              result: "정답",
+              result: `정답: ${this.state.first * this.state.second}`,
               first: Math.ceil(Math.random() * 9),
               second: Math.ceil(Math.random() * 9),
               value: "",
@@ -75,6 +75,7 @@
       }
     </script>
     <script type="text/babel">
+      // 컴포넌트를 복수로 양산, 그러나 각각의 컴포넌트는 독립적으로 존재한다.
       ReactDOM.render(<NBN />, document.querySelector("#root"));
     </script>
   </body>
