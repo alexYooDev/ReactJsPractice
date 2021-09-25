@@ -29,10 +29,45 @@
         );
         const [result, setResult] = React.useState("");
         const [value, setValue] = React.useState("");
+        // React.useRef 이렇게 하여 DOM에 접근
+        const inputRef = React.useRef(null);
+
+        const onChangeInput = (e) => {
+          setValue(e.target.value);
+        };
+
+        const onSubmitForm = () => {
+          e.preventDefault();
+          inputRef.current.focus();
+          if (
+            parseInt(this.state.value) ===
+            this.state.first * this.state.second
+          ) {
+            setResult(`정답: ${value}`);
+            setFirst(Math.ceil(Math.random() * 9));
+            setSecond(Math.ceil(Math.random() * 9));
+            setValue("");
+          } else {
+            setResult("");
+            setValue("");
+          }
+        };
+
         return (
-          <div>
-            {first} 곱하기 {second}는? {value} {result}
-          </div>
+          <React.Fragment>
+            <div>
+              {first} 곱하기 {second}는?
+            </div>
+            <form onSubmit={onSubmitForm}>
+              <input
+                ref={inputRef}
+                onChange={onChangeInput}
+                value={value}
+              ></input>
+              <button>입력!</button>
+            </form>
+            <div id="result">{result}</div>
+          </React.Fragment>
         );
       };
     </script>
