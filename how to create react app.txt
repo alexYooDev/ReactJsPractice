@@ -1,0 +1,1 @@
+먼저 cmd 창을 열고 cd react app 을 만들 폴더에 npx create-react-app 프로젝트 폴더 이름 을 입력하여 react app 생성

@@ -1,5 +1,5 @@
 import dummy from '../DB/data.json';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Word from './Word';
 
 export default function Day() {

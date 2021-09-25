@@ -27,8 +27,8 @@
         const [second, setSecond] = React.useState(
           Math.ceil(Math.random() * 9)
         );
-        const [result, setResult] = React.useState("");
-        const [value, setValue] = React.useState("");
+        const [value, setValue] = React.useState('');
+        const [result, setResult] = React.useState('');
         // React.useRef 이렇게 하여 DOM에 접근
         const inputRef = React.useRef(null);
 
@@ -36,20 +36,21 @@
           setValue(e.target.value);
         };
 
-        const onSubmitForm = () => {
+        const onSubmitForm = (e) => {
           e.preventDefault();
           inputRef.current.focus();
-          if (
-            parseInt(this.state.value) ===
-            this.state.first * this.state.second
-          ) {
+          if (parseInt(value) === first * second) {
             setResult(`정답: ${value}`);
             setFirst(Math.ceil(Math.random() * 9));
             setSecond(Math.ceil(Math.random() * 9));
-            setValue("");
+            setValue('');
           } else {
-            setResult("");
-            setValue("");
+            setResult('땡');
+            setValue('');
+            this.setState({
+              result: '땡',
+              value: '',
+            });
           }
         };
 
@@ -73,7 +74,7 @@
     </script>
     <script type="text/babel">
       // 컴포넌트를 복수로 양산, 그러나 각각의 컴포넌트는 독립적으로 존재한다.
-      ReactDOM.render(<NBN />, document.querySelector("#root"));
+      ReactDOM.render(<NBN />, document.querySelector('#root'));
     </script>
   </body>
 </html>
