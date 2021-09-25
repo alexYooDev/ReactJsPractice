@@ -19,17 +19,15 @@
     <div id="root"></div>
     <script type="text/babel">
       class NBN extends React.Component {
-        constructor(props) {
-          super(props);
-          // 가변성이 있는 것들을 state 객체 내에 포함
-          this.state = {
-            first: Math.ceil(Math.random() * 9),
-            second: Math.ceil(Math.random() * 9),
-            value: "",
-            result: "",
-          };
-        }
-
+        // 가변성이 있는 것들을 state 객체 내에 포함
+        // constructor를 사용하지 않는 방식: 실무에서 많이 사용
+        state = {
+          first: Math.ceil(Math.random() * 9),
+          second: Math.ceil(Math.random() * 9),
+          value: "",
+          result: "",
+        };
+        // 함수를 render 단에서 분리시킬 경우, function이 아닌 arrow function을 사용해야 한다 (this 때문).
         onSubmit = (e) => {
           e.preventDefault();
           if (
@@ -54,9 +52,10 @@
           this.setState({ value: e.target.value });
         };
 
+        // React.Fragment를 사용하여 div를 element에서 사라지게 할 수 있음 (CSS 적용 편의를 위해 쓸데없는 태그는 없는 것이 좋다.)
         render() {
           return (
-            <div>
+            <React.Fragment>
               <div>
                 {this.state.first} 곱하기 {this.state.second}는?
               </div>
@@ -66,10 +65,10 @@
                   value={this.state.value}
                   onChange={this.onChange}
                 />
-                <button>입력</button>
+                <button type="submit">입력</button>
               </form>
               <div>{this.state.result}</div>
-            </div>
+            </React.Fragment>
           );
         }
       }
