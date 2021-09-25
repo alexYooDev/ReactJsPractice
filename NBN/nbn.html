@@ -57,7 +57,13 @@
           this.setState({ value: e.target.value });
         };
 
+        onRefInput = (c) => {
+          this.input = c;
+        };
+
         // React.Fragment를 사용하여 div를 element에서 사라지게 할 수 있음 (CSS 적용 편의를 위해 쓸데없는 태그는 없는 것이 좋다.)
+        // setState를 하면, render 함수가 다시 실행된다. (render 많이 실행할 수록 성능이 느려짐)
+        // 따라서 render 영역에서는 함수 선언을 하지 않고, 따로 빼놓는 편이 좋다.
         render() {
           console.log("rendered");
           return (
@@ -67,9 +73,7 @@
               </div>
               <form onSubmit={this.onSubmit}>
                 <input
-                  ref={(c) => {
-                    this.input = c;
-                  }}
+                  ref={this.onRefInput}
                   type="number"
                   value={this.state.value}
                   onChange={this.onChange}
