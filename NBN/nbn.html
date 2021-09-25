@@ -30,15 +30,20 @@
         // 함수를 render 단에서 분리시킬 경우, function이 아닌 arrow function을 사용해야 한다 (this 때문).
         onSubmit = (e) => {
           e.preventDefault();
+          this.input.focus();
           if (
             parseInt(this.state.value) ===
             this.state.first * this.state.second
           ) {
-            this.setState({
-              result: `정답: ${this.state.first * this.state.second}`,
-              first: Math.ceil(Math.random() * 9),
-              second: Math.ceil(Math.random() * 9),
-              value: "",
+            // 현재 state와 미래에 반영되는 state를 구별하기 위해, setState 안에 함수를 넣고 반환 (실무에서 많이 쓰임)
+            // 예전 상태 값과 미래 상태 값을 구별한다. counter 기능을 구현할 때 유용
+            this.setState((prevState) => {
+              return {
+                result: `정답: ${prevState.value}`,
+                first: Math.ceil(Math.random() * 9),
+                second: Math.ceil(Math.random() * 9),
+                value: "",
+              };
             });
           } else {
             this.setState({
@@ -54,6 +59,7 @@
 
         // React.Fragment를 사용하여 div를 element에서 사라지게 할 수 있음 (CSS 적용 편의를 위해 쓸데없는 태그는 없는 것이 좋다.)
         render() {
+          console.log("rendered");
           return (
             <React.Fragment>
               <div>
@@ -61,6 +67,9 @@
               </div>
               <form onSubmit={this.onSubmit}>
                 <input
+                  ref={(c) => {
+                    this.input = c;
+                  }}
                   type="number"
                   value={this.state.value}
                   onChange={this.onChange}
