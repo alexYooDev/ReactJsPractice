@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Nine By Nine</title>
     <script
       crossorigin
@@ -27,8 +28,8 @@
         const [second, setSecond] = React.useState(
           Math.ceil(Math.random() * 9)
         );
-        const [value, setValue] = React.useState('');
-        const [result, setResult] = React.useState('');
+        const [value, setValue] = React.useState("");
+        const [result, setResult] = React.useState("");
         // React.useRef 이렇게 하여 DOM에 접근
         const inputRef = React.useRef(null);
 
@@ -43,30 +44,29 @@
             setResult(`정답: ${value}`);
             setFirst(Math.ceil(Math.random() * 9));
             setSecond(Math.ceil(Math.random() * 9));
-            setValue('');
+            setValue("");
           } else {
-            setResult('땡');
-            setValue('');
-            this.setState({
-              result: '땡',
-              value: '',
-            });
+            setResult("땡");
+            setValue("");
           }
         };
 
         return (
           <React.Fragment>
-            <div>
+            <h1>Nine By Nine with React</h1>
+            <div className="question">
               {first} 곱하기 {second}는?
             </div>
-            <form onSubmit={onSubmitForm}>
-              <input
-                ref={inputRef}
-                onChange={onChangeInput}
-                value={value}
-              ></input>
-              <button>입력!</button>
-            </form>
+            <div className="type-input">
+              <form onSubmit={onSubmitForm}>
+                <input
+                  ref={inputRef}
+                  onChange={onChangeInput}
+                  value={value}
+                ></input>
+                <button>입력!</button>
+              </form>
+            </div>
             <div id="result">{result}</div>
           </React.Fragment>
         );
@@ -74,7 +74,7 @@
     </script>
     <script type="text/babel">
       // 컴포넌트를 복수로 양산, 그러나 각각의 컴포넌트는 독립적으로 존재한다.
-      ReactDOM.render(<NBN />, document.querySelector('#root'));
+      ReactDOM.render(<NBN />, document.querySelector("#root"));
     </script>
   </body>
 </html>
