@@ -1,9 +1,12 @@
 //jsx 문법을 사용하는 jsx 파일
 
 // 노드의 모듈 시스템으로 npm에 설치한 react, react-dom을 불러온다
-const React = require("react");
-const ReactDom = require("react-dom");
+import React from "react";
+import ReactDom from "react-dom";
+import { hot } from "react-hot-loader/root";
 
-const WordTail = require("./WordTail");
+const NumberBaseBall = require("./NumberBaseBall");
 
-React.render(<WordTail />, document.querySelector("#root"));
+const Hot = hot(NumberBaseBall);
+
+React.render(<Hot />, document.querySelector("#root"));

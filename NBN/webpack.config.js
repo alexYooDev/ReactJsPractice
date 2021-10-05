@@ -4,7 +4,7 @@ const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 Module.exports = {
   name: "wordtail-setting",
-  mode: "development", //실서비스: production
+  mode: "development",
   devtool: "eval",
   resolve: {
     extension: [".js", ".jsx"],
@@ -13,28 +13,14 @@ Module.exports = {
   entry: {
     app: ["./client"],
   },
-  module: {
+  modules: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?/,
         loader: "babel-loader",
         options: {
-          presets: [
-            [
-              "@babel/preset-env",
-              {
-                targets: {
-                  browsers: ["> 1% in KR"], //browserlist
-                },
-                debug: true,
-              },
-            ],
-            "@babel/preset-react",
-          ],
-          plugins: [
-            "@babel/plugin-proposal-class-properties",
-            "react-refresh/babel",
-          ],
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: ["@babel/plugin-proposal-class-properties"],
         },
       },
     ],
@@ -45,5 +31,8 @@ Module.exports = {
     //현재 디렉토리와 하위디렉토리 주소를 합친다.
     path: path.join(__dirname, "dist"),
     filename: "app.js",
+  },
+  devServer: {
+    hot: true,
   },
 };

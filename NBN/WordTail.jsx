@@ -3,10 +3,14 @@
 const React = require("react");
 const { Component } = React;
 class WordTail extends Component {
-  state = {};
+  state = {
+    text: "Hello, React",
+  };
 
-  render() {}
+  render() {
+    return <h1>this.state.text</h1>;
+  }
 }
 
 //client.jsx 파일에서 불러올 수 있다.
-module.exportes = WordRelay;
+module.exports = WordTail;
